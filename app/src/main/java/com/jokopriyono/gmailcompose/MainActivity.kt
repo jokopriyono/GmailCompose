@@ -4,10 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
+import com.jokopriyono.gmailcompose.components.HomeAppBar
 import com.jokopriyono.gmailcompose.ui.theme.GmailComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,7 +20,7 @@ class MainActivity : ComponentActivity() {
             GmailComposeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
+                    GmailApp()
                 }
             }
         }
@@ -25,14 +28,22 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun GmailApp() {
+    val scaffoldState = rememberScaffoldState()
+    val coroutineScope = rememberCoroutineScope()
+
+    Scaffold(scaffoldState = scaffoldState, topBar = { HomeAppBar(scaffoldState, coroutineScope) },
+        drawerContent = {
+
+        }) {
+
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     GmailComposeTheme {
-        Greeting("Android")
+        GmailApp()
     }
 }
