@@ -13,6 +13,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
 import com.jokopriyono.gmailcompose.components.GmailDrawerMenu
 import com.jokopriyono.gmailcompose.components.HomeAppBar
+import com.jokopriyono.gmailcompose.components.HomeBottomMenu
 import com.jokopriyono.gmailcompose.ui.theme.GmailComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,9 +36,14 @@ fun GmailApp() {
     val coroutineScope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
 
-    Scaffold(scaffoldState = scaffoldState, topBar = { HomeAppBar(scaffoldState, coroutineScope) },
+    Scaffold(
+        scaffoldState = scaffoldState,
+        topBar = { HomeAppBar(scaffoldState, coroutineScope) },
         drawerContent = {
             GmailDrawerMenu(scrollState)
+        },
+        bottomBar = {
+            HomeBottomMenu()
         }) {
 
     }
