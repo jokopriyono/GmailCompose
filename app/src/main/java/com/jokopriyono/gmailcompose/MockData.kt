@@ -1,5 +1,6 @@
 package com.jokopriyono.gmailcompose
 
+import com.jokopriyono.gmailcompose.model.Account
 import com.jokopriyono.gmailcompose.model.MailData
 
 val mailList = listOf(
@@ -73,4 +74,15 @@ val mailList = listOf(
         body = "We have an opening that suits your profile kindly check it out and indicate your interest",
         timeStamp = "20:10"
     )
+)
+
+val accountList = listOf(
+    Account(
+        icon = R.drawable.nasa,
+        userName = "Tutorials Eu",
+        email = "tutorials@eu.com",
+        unReadMails = 99
+    ),
+    Account(userName = "Chris Morty", email = "chris@gmail.com", unReadMails = 80),
+    Account(userName = "Christy Jane", email = "jane@gmail.com", unReadMails = 99)
 )
