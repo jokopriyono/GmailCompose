@@ -1,5 +1,8 @@
 package com.jokopriyono.gmailcompose.components
 
+import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -23,12 +26,13 @@ import com.jokopriyono.gmailcompose.mailList
 import com.jokopriyono.gmailcompose.model.MailData
 
 @Composable
-fun MailList(paddingValues: PaddingValues) {
+fun MailList(paddingValues: PaddingValues, scrollState: ScrollState) {
     Box(modifier = Modifier.padding(paddingValues)) {
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp)
+                .scrollable(scrollState, Orientation.Vertical)
         ) {
             items(mailList) {
                 MailItem(mailData = it)
@@ -51,7 +55,8 @@ fun MailItem(mailData: MailData, modifier: Modifier = Modifier) {
                 .clip(CircleShape), backgroundColor = Color.Gray
         ) {
             Text(
-                text = mailData.userName[0].toString(), textAlign = TextAlign.Center,
+                text = mailData.userName[0].toString(),
+                textAlign = TextAlign.Center,
                 modifier = modifier.padding(8.dp)
             )
         }
